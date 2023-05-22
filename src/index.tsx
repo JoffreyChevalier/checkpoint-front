@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
-import { ThemeProvider } from "@material-tailwind/react";
 
 
 const httpLink = new HttpLink( {
@@ -27,9 +26,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ApolloProvider client={ client }>
-      <ThemeProvider>
-        <App/>
-      </ThemeProvider> </ApolloProvider>
+      <App/>
+    </ApolloProvider>
   </React.StrictMode>
 );
 

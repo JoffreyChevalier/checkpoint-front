@@ -7,3 +7,16 @@ export const GET_CONTINENTS = gql`
             name
         }
     }`;
+
+export const GET_COUNTRIES_FROM_CONTINENT = gql`
+    query GetCountriesFromContinent($code: ID!) {
+        continent(code: $code) {
+            code
+            name
+            countries {
+                code
+                name
+                emoji
+            }
+        }
+    }`;

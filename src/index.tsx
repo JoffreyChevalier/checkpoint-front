@@ -3,13 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from "@apollo/client";
+import { ThemeProvider } from "@material-tailwind/react";
+
+
+const httpLink = new HttpLink( {
+  uri: "https://countries.nausicaa.wilders.dev/"
+} );
+
+const client = new ApolloClient( {
+  link: httpLink,
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'cache-first'
+    }
+  }
+} );
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById( 'root' ) as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={ client }>
+      <ThemeProvider>
+        <App/>
+      </ThemeProvider> </ApolloProvider>
   </React.StrictMode>
 );
 

@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const GET_CONTINENTS = gql`
     query GetAllContinents {
@@ -6,7 +6,7 @@ export const GET_CONTINENTS = gql`
             code
             name
         }
-    }`;
+    }`
 
 export const GET_COUNTRIES_FROM_CONTINENT = gql`
     query GetCountriesFromContinent($code: ID!) {
@@ -19,4 +19,15 @@ export const GET_COUNTRIES_FROM_CONTINENT = gql`
                 emoji
             }
         }
-    }`;
+    }`
+export const GET_COUNTRY = gql`
+    query getCountry($code: ID!) {
+        country(code: $code) {
+            name
+            capital
+            currency
+            languages {
+                name
+            }
+        }
+    }`
